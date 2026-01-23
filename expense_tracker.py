@@ -24,5 +24,12 @@ def view_expenses(n=5):
     return data.tail(n)
 print(view_expenses(5))
 
+#function for summarizing expenses
+def summarize_expenses(by="Category"):
+    summary = data[data["Income/Expense"] == "Expense"].groupby(by)["Amount"].sum()
+    return summary.sort_values(ascending=False)
+
+print(summarize_expenses())
+
 
 
